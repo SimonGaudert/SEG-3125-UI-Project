@@ -21,7 +21,13 @@ export default class LoginScreen extends React.Component {
   }
 
   onClickListener = (viewId) => {
-    this.props.navigation.navigate('Main')
+    if(viewId == 'login'){
+      this.props.navigation.navigate('Main')
+    }else if(viewId == 'register'){
+      Alert.alert('Feature Not Part of Prototype','Try Login')
+    }else if(viewID == 'forgotPassword'){
+      Alert.alert('Feature Not Part of Prototype','Try Login')
+    }
   }
 
   render() {
@@ -55,7 +61,7 @@ export default class LoginScreen extends React.Component {
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>
 
-        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('restore_password')}>
+        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('forgotPassword')}>
           <Text style={styles.forgotText}>Forgot your password?</Text>
         </TouchableHighlight>
 
