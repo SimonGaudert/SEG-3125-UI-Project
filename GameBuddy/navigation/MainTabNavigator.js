@@ -4,9 +4,10 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ChatScreen from '../screens/ChatScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import GamesScreen from '../screens/GamesScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 import {
   Button, Text, View, 
@@ -42,6 +43,22 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
+const ChatStack = createStackNavigator(
+  {
+    Chat: ChatScreen,
+  },
+  config
+);
+
+ChatStack.navigationOptions = {
+  tabBarLabel: 'Chat',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-chatbubbles' : 'md-chatbubbles'} />
+  ),
+};
+
+ChatStack.path = '';
+
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
@@ -52,7 +69,7 @@ const SettingsStack = createStackNavigator(
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-settings' : 'md-settings'} />
   ),
 };
 
@@ -92,11 +109,11 @@ GamesScreenStack.navigationOptions = {
 GamesScreenStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  
-  // SettingsStack,
   ProfileStack,
+  ChatStack,
   HomeStack,
   GamesScreenStack,
+  SettingsStack
 });
 
 tabNavigator.path = '';

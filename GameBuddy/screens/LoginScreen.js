@@ -25,7 +25,7 @@ export default class LoginScreen extends React.Component {
       this.props.navigation.navigate('Main')
     }else if(viewId == 'register'){
       Alert.alert('Feature Not Part of Prototype','Try Login')
-    }else if(viewID == 'forgotPassword'){
+    }else if(viewId == 'forgotPassword'){
       Alert.alert('Feature Not Part of Prototype','Try Login')
     }
   }

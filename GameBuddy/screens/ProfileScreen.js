@@ -190,9 +190,6 @@ export default class ProfileScreen extends React.Component {
 
 ProfileScreen.navigationOptions = {
     title: 'Profile',
-    headerRight: (<View style={{ marginRight: 10 }}>
-                    <TabBarIcon color='red' name={Platform.OS === 'ios' ? 'ios-settings' : 'md-settings'} />
-                </View>),
 };
 
 const styles = StyleSheet.create({
