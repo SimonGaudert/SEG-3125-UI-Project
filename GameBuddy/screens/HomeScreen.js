@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -19,37 +20,40 @@ export default function HomeScreen() {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
+          <Image source={require('../assets/images/05.jpg')} style={[styles.welcomeImage, { width: (Dimensions.get('window').width) -8 }, { height: (Dimensions.get('window').height)/2}]}/>
         </View>
 
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
+        <View style={styles.titleContainer}>
 
-          <Text style={styles.getStartedText}>Get started by</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload TESTing.
+          <Text style={styles.nameText}>
+            Steve, 21
           </Text>
         </View>
 
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
+        <View style={styles.infoContainer}>
+
+        <Text style={styles.infoText}>
+          About Me:{'\n'}
+          stuff{'\n'}
+          stuff{'\n'}
+          stuff{'\n'}
+          stuff{'\n'}
+          stuff{'\n'}
+          stuff{'\n'}
+          stuff{'\n'}
+          stuff{'\n'}
+          </Text>
+
+        </View>
+
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoText}>
+            Favourite Games:{'\n'}
+            Rocket League{'\n'}
+            Fifa19{'\n'}
+
             </Text>
-          </TouchableOpacity>
+
         </View>
       </ScrollView>
     </View>
@@ -60,40 +64,40 @@ HomeScreen.navigationOptions = {
   header: null,
 };
 
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
-
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/development-mode/'
-  );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
-  );
-}
+// function DevelopmentModeNotice() {
+//   if (__DEV__) {
+//     const learnMoreButton = (
+//       <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
+//         Learn more
+//       </Text>
+//     );
+//
+//     return (
+//       <Text style={styles.developmentModeText}>
+//         Development mode is enabled: your app will be slower but you can use
+//         useful development tools. {learnMoreButton}
+//       </Text>
+//     );
+//   } else {
+//     return (
+//       <Text style={styles.developmentModeText}>
+//         You are not in development mode: your app will run at full speed.
+//       </Text>
+//     );
+//   }
+// }
+//
+// function handleLearnMorePress() {
+//   WebBrowser.openBrowserAsync(
+//     'https://docs.expo.io/versions/latest/workflow/development-mode/'
+//   );
+// }
+//
+// function handleHelpPress() {
+//   WebBrowser.openBrowserAsync(
+//     'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
@@ -115,15 +119,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
   },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+  welcomeImage: {//
+    marginRight:4,
+    marginLeft:4,
+    marginTop:4,
+    paddingTop:20,
+    paddingBottom:20,
+    backgroundColor:'#68a0cf',
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#fff'
   },
-  getStartedContainer: {
-    alignItems: 'center',
+  titleContainer: {
+    //alignItems: 'center',
     marginHorizontal: 50,
   },
   homeScreenFilename: {
@@ -137,11 +145,11 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     paddingHorizontal: 4,
   },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+  nameText: {//
+    fontSize: 25,
+    color: 'rgba(255,255,255, 0.9)',
     lineHeight: 24,
-    textAlign: 'center',
+    textAlign: 'left',
   },
   tabBarInfoContainer: {
     position: 'absolute',
@@ -171,15 +179,17 @@ const styles = StyleSheet.create({
   navigationFilename: {
     marginTop: 5,
   },
-  helpContainer: {
+  infoContainer: {
     marginTop: 15,
-    alignItems: 'center',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    //alignItems: 'center',
   },
   helpLink: {
     paddingVertical: 15,
   },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
+  infoText: {//
+    fontSize: 15,
+    color: 'rgba(255,255,255, 0.9)',
   },
 });
