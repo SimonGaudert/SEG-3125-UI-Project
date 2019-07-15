@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 
 const config = Platform.select({
@@ -36,6 +37,10 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
+
+
+
+
 const LinksStack = createStackNavigator(
   {
     Links: LinksScreen,
@@ -52,9 +57,20 @@ LinksStack.navigationOptions = {
 
 LinksStack.path = '';
 
+
+
+
+
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
+  },
+  config
+);
+
+const ProfileStack = createStackNavigator(
+  {
+    Settings: ProfileScreen,
   },
   config
 );
@@ -68,10 +84,20 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+ProfileStack.navigationOptions = {
+  tabBarLabel: 'Settings',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-add' : 'md-add'} />
+  ),
+};
+
+ProfileStack.path = '';
+
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+  ProfileScreen,
 });
 
 tabNavigator.path = '';
