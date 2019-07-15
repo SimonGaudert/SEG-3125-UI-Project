@@ -8,6 +8,11 @@ import SettingsScreen from '../screens/SettingsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import GamesScreen from '../screens/GamesScreen';
 
+import {
+  Button, Text, View, 
+} from 'react-native';
+
+import {Icon} from 'react-native-elements'
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -22,17 +27,17 @@ const HomeStack = createStackNavigator(
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-add`
-          : 'md-add'
-      }
-    />
-  ),
+  tabBarLabel: ' ',
+  tabBarIcon: 
+      <View style={{
+          height: 80,
+          width: 80,
+          borderRadius: 100,
+          backgroundColor: 'rgb(82,152,239)',
+          paddingTop: 15}}>
+        <Icon name="ios-add" color="white" type="ionicon" size={50}/>
+      </View>
+  
 };
 
 HomeStack.path = '';
@@ -62,8 +67,9 @@ const ProfileStack = createStackNavigator(
 
 ProfileStack.navigationOptions = {
   tabBarLabel: 'Profile',
+  title:'Profile',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'} />
   ),
 };
 
@@ -86,9 +92,10 @@ GamesScreenStack.navigationOptions = {
 GamesScreenStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  SettingsStack,
+  
+  // SettingsStack,
   ProfileStack,
+  HomeStack,
   GamesScreenStack,
 });
 
