@@ -18,8 +18,8 @@ export default function ProfileScreen() {
    * we just wanted to give you a quick view of your config.
    */
   //state = {switchValue:false}
-  
-    
+
+
   return (
     <ScrollView contentContainerStyle={{alignItems: 'center', justifyContent : 'center'}}>
         <Text style={styles.profile}>
@@ -45,7 +45,7 @@ export default function ProfileScreen() {
             autoFocus={true}
             placeholder='Describe Yourself'
         />
-       
+
 
         <Text style={{ textAlign:'left'}}>
             Games You Own
@@ -88,8 +88,8 @@ export default function ProfileScreen() {
             <Switch value={this.state.switchValue} onValueChange={(switchValue) => this.setState({switchValue})}/>
         </Text> */}
 
-        
-        
+
+
     </ScrollView>
   );
 }
@@ -125,4 +125,3 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
       },
   });
-  

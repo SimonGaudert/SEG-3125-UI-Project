@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import GamesScreen from '../screens/GamesScreen';
 
 
 const config = Platform.select({
@@ -37,10 +38,6 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-
-
-
-
 const LinksStack = createStackNavigator(
   {
     Links: LinksScreen,
@@ -57,20 +54,9 @@ LinksStack.navigationOptions = {
 
 LinksStack.path = '';
 
-
-
-
-
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
-  },
-  config
-);
-
-const ProfileStack = createStackNavigator(
-  {
-    Settings: ProfileScreen,
   },
   config
 );
@@ -84,20 +70,44 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+const ProfileStack = createStackNavigator(
+  {
+    Settings: ProfileScreen,
+  },
+  config
+);
+
 ProfileStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'Profile',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-add' : 'md-add'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
 ProfileStack.path = '';
 
+const GamesScreenStack = createStackNavigator(
+  {
+    Settings: GamesScreen,
+  },
+  config
+);
+
+GamesScreenStack.navigationOptions = {
+  tabBarLabel: 'Games',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  ),
+};
+
+GamesScreenStack.path = '';
+
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
-  ProfileScreen,
+  ProfileStack,
+  GamesScreenStack,
 });
 
 tabNavigator.path = '';
