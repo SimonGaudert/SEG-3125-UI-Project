@@ -35,8 +35,6 @@ export default class ProfileScreen extends React.Component {
         language3:'1'
     }
     render(){
-
-    
         return (
             <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={styles.profile}>
