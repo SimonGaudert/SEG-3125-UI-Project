@@ -14,8 +14,9 @@ import {
 import { Icon } from 'react-native-elements'
 
 import CardStack, { Card } from 'react-native-card-stack-swiper';
-
-export default function HomeScreen() {
+let nav = null;
+export default function HomeScreen({ navigation }) {
+  nav = navigation;
   return (
     <View style={{ flex: 1 }}>
       <CardStack
@@ -29,7 +30,12 @@ export default function HomeScreen() {
         onSwiped={() => console.log('onSwiped')}
         onSwipedLeft={() => console.log('onSwipedLeft')}
       >
-        <Card style={[styles.card, styles.card1]}><Text style={styles.label}>A</Text></Card>
+        <Card style={[styles.card, styles.card1]}>
+          <View style={{ flexDirection: 'row', height: 50, width: 10 }}>
+            <Image source={require('../assets/images/05.jpg')} />
+          </View>
+        </Card>
+
         <Card style={[styles.card, styles.card2]}><Text style={styles.label}>B</Text></Card>
         <Card style={[styles.card, styles.card1]}><Text style={styles.label}>C</Text></Card>
         <Card style={[styles.card, styles.card2]}><Text style={styles.label}>D</Text></Card>
@@ -46,9 +52,7 @@ export default function HomeScreen() {
             <Icon name='clear' color='#fd267d' size="50" />
           </TouchableOpacity>
           <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
-            for(let i = 0; i<5;i++){
-              this.swiper.goBackFromLeft();
-            }
+            this.swiper.goBackFromLeft();
           }}>
             <Icon name='refresh' color='rgb(246,190,66)' style={{ height: 62, width: 62 }} />
           </TouchableOpacity>
@@ -107,9 +111,13 @@ export default function HomeScreen() {
   );
 }
 
+
+
 HomeScreen.navigationOptions = {
   title: "Match",
+  headerRight: (<View style={{ paddingRight: 20 }}><Icon onPress={() => {nav.navigate('Filter');}} type='ionicon' name='ios-options' /></View>)
 };
+
 
 const styles = StyleSheet.create({
   container: {

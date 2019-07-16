@@ -7,7 +7,9 @@ import HomeScreen from '../screens/HomeScreen';
 import ChatScreen from '../screens/ChatScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import GamesScreen from '../screens/GamesScreen';
+import FilterScreen from '../screens/FilterScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+
 
 import {
   Button, Text, View, 
@@ -23,6 +25,7 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    Filter: FilterScreen
   },
   config
 );
@@ -94,7 +97,7 @@ ProfileStack.path = '';
 
 const GamesScreenStack = createStackNavigator(
   {
-    Settings: GamesScreen,
+    Game: GamesScreen,
   },
   config
 );
