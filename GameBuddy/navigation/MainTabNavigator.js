@@ -8,7 +8,7 @@ import ChatScreen from '../screens/ChatScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import GamesScreen from '../screens/GamesScreen';
 import FilterScreen from '../screens/FilterScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import SettingScreen from '../screens/SettingScreen';
 
 
 import {
@@ -64,7 +64,7 @@ ChatStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: SettingScreen,
   },
   config
 );
