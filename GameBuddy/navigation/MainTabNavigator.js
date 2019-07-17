@@ -105,7 +105,7 @@ const GamesScreenStack = createStackNavigator(
 GamesScreenStack.navigationOptions = {
   tabBarLabel: 'Games',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} type='ionicon' name='logo-buffer'/>
   ),
 };
 
