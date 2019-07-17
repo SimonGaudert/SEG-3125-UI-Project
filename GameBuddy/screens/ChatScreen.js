@@ -18,17 +18,7 @@ export default class ChatScreen extends React.Component {
             name: 'React Native',
             avatar: 'https://placeimg.com/140/140/any',
           },
-        },
-        {
-          _id: 2,
-          text: 'Nice to meet you John!',
-          createdAt: new Date(),
-          user: {
-            _id: 3,
-            name: 'React Native',
-            avatar: 'https://placeimg.com/140/140/any',
-          },
-        },
+        }
       ],
     })
   }
