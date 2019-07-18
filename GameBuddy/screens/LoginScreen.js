@@ -9,25 +9,53 @@ import {
   Image,
   Alert
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 export default class LoginScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    state = {
+    this.state = {
       email: '',
       password: '',
     }
   }
 
   onClickListener = (viewId) => {
-    if(viewId == 'login'){
-      this.props.navigation.navigate('Main')
-    }else if(viewId == 'register'){
-      Alert.alert('Feature Not Part of Prototype','Try Login')
-    }else if(viewId == 'forgotPassword'){
-      Alert.alert('Feature Not Part of Prototype','Try Login')
+    // if(this.state.email == undefined && this.state.password == undefined){
+    //   this.state = {email:'abc', password:'abc'}
+    // } else if(this.state.email === undefined ){
+    //   this.state = {email:'abc'}
+    // }else if(this.state.password === undefined){
+    //   this.state = { password:'abc'}
+    console.log(this.validateUsername(this.state.email))
+    console.log(this.validateUsername(this.state.password))
+
+    if (viewId == 'login') {
+      if(this.validateUsername(this.state.email) == false && this.validatePassword(this.state.password)==false){
+        Alert.alert('General Login Error', 'Invalid email. Password must be at least 6 characters.')
+      } else if(this.validateUsername(this.state.email) == false){
+        Alert.alert('Email Error', 'Invalid email.')
+      }else if (this.validatePassword(this.state.password)==false){
+        Alert.alert('Password Error', ' Password must be at least 6 characters.')
+      } else{
+        this.props.navigation.navigate('Main')
+      }
+    } else if (viewId == 'register') {
+      Alert.alert('Feature Not Part of Prototype.', 'User will be sent to external site. Try Login.')
+    } else if (viewId == 'forgotPassword') {
+      Alert.alert('Feature Not Part of Prototype.', 'User will be sent to external site. Try Login')
     }
+  }
+  
+  validateUsername(username){
+    var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return re.test(String(username).toLowerCase());
+  }
+
+  validatePassword(password) {
+    var re = /^.{6,}$/
+    return re.test(String(password).toLowerCase());
   }
 
   render() {
@@ -35,7 +63,7 @@ export default class LoginScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Image
-            style={{ width: 200, height: 200, marginBottom:50 }}
+            style={{ width: 200, height: 200, marginBottom: 50 }}
             source={require('../assets/images/icon.png')}
           />
         </View>
@@ -45,7 +73,8 @@ export default class LoginScreen extends React.Component {
             placeholder="Email"
             keyboardType="email-address"
             underlineColorAndroid='transparent'
-            onChangeText={(email) => this.setState({ email })} />
+            onChangeText={(email) => this.setState({ email })}
+          />
         </View>
 
         <View style={styles.inputContainer}>

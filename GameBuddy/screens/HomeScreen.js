@@ -31,12 +31,32 @@ export default function HomeScreen({ navigation }) {
         onSwipedLeft={() => console.log('onSwipedLeft')}
       >
         <Card style={[styles.card, styles.card1]}>
-          {/* <View style={{ height: 50, width: 10 }}> */}
-            <Image style={{width:"100%",height:'70%'}} source={require('../assets/images/05.jpg')} />
-            <Text style={{color:'white', fontSize:30, paddingTop:10,paddingLeft:10}} fontFamily='Roboto'>Jason, 29</Text>
-            <Text style={{color:'grey', fontSize:20, paddingTop:2,paddingLeft:10}} fontFamily='Roboto'>Intermidiate</Text>
 
-          {/* </View> */}
+          <Image style={{ width: "100%", height: '70%' }} source={require('../assets/images/05.jpg')} />
+          <View style={{ flex: 1, flexDirection: 'col' }}>
+            <Text style={{ color: 'white', fontSize: 30, paddingTop: 10, paddingLeft: 10 }} fontFamily='Roboto'>Jason, 29</Text>
+            <Text style={{ color: 'grey', fontSize: 20, paddingTop: 2, paddingLeft: 10 }} fontFamily='Roboto'>Intermidiate</Text>
+
+            <View style={{ flex: 1, flexDirection: 'row', marginLeft: 10, marginTop: 5 }}>
+              <Icon type='ionicon' name='logo-playstation' color='white' size={30} />
+              <Icon type='ionicon' name='logo-steam' color='white' size={30} />
+            </View>
+          </View>
+
+        </Card>
+
+        <Card style={[styles.card, styles.card1]}>
+
+          <Image style={{ width: "100%", height: '70%' }} source={{ uri: 'https://i.dailymail.co.uk/1s/2019/02/06/11/9455752-6673151-The_female_gamer_who_plays_games_such_as_Warframe_and_Borderland-a-8_1549450999571.jpg', }} />
+          <View style={{ flex: 1, flexDirection: 'col' }}>
+            <Text style={{ color: 'white', fontSize: 30, paddingTop: 10, paddingLeft: 10 }} fontFamily='Roboto'>Jen, 20</Text>
+            <Text style={{ color: 'grey', fontSize: 20, paddingTop: 2, paddingLeft: 10 }} fontFamily='Roboto'>Professional</Text>
+
+            <View style={{ flex: 1, flexDirection: 'row', marginLeft: 10, marginTop: 5 }}>
+              <Icon type='ionicon' name='logo-playstation' color='white' size={30} />
+            </View>
+          </View>
+
         </Card>
 
         {/* <Card style={[styles.card, styles.card2]}><Text style={styles.label}>B</Text></Card>
@@ -118,7 +138,7 @@ export default function HomeScreen({ navigation }) {
 
 HomeScreen.navigationOptions = {
   title: "Match",
-  headerRight: (<View style={{ paddingRight: 20 }}><Icon onPress={() => {nav.navigate('Filter');}} type='ionicon' name='ios-options' /></View>)
+  headerRight: (<View style={{ paddingRight: 20 }}><Icon onPress={() => { nav.navigate('Filter'); }} type='ionicon' name='ios-options' /></View>)
 };
 
 
