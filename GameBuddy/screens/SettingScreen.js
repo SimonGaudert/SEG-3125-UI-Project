@@ -47,7 +47,7 @@ export default class SettingScreen extends React.Component {
   settingsData = [
     {
       type: 'SECTION',
-      header: 'My Section'.toUpperCase(),
+      header: ' ',
       rows: [
         {
           title: 'Share Location',

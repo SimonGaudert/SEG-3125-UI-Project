@@ -5,6 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import ChatScreen from '../screens/ChatScreen';
+import MessageScreen from '../screens/MessageScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import GamesScreen from '../screens/GamesScreen';
 import FilterScreen from '../screens/FilterScreen';
@@ -46,21 +47,22 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const ChatStack = createStackNavigator(
+const MessageStack = createStackNavigator(
   {
-    Chat: ChatScreen,
+    Message: MessageScreen,
+    Chat:ChatScreen
   },
   config
 );
 
-ChatStack.navigationOptions = {
-  tabBarLabel: 'Chat',
+MessageStack.navigationOptions = {
+  tabBarLabel: 'Messages',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-chatbubbles' : 'md-chatbubbles'} />
   ),
 };
 
-ChatStack.path = '';
+MessageStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
@@ -113,7 +115,7 @@ GamesScreenStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   ProfileStack,
-  ChatStack,
+  MessageStack,
   HomeStack,
   GamesScreenStack,
   SettingsStack

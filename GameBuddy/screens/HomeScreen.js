@@ -31,15 +31,18 @@ export default function HomeScreen({ navigation }) {
         onSwipedLeft={() => console.log('onSwipedLeft')}
       >
         <Card style={[styles.card, styles.card1]}>
-          <View style={{ flexDirection: 'row', height: 50, width: 10 }}>
-            <Image source={require('../assets/images/05.jpg')} />
-          </View>
+          {/* <View style={{ height: 50, width: 10 }}> */}
+            <Image style={{width:"100%",height:'70%'}} source={require('../assets/images/05.jpg')} />
+            <Text style={{color:'white', fontSize:30, paddingTop:10,paddingLeft:10}} fontFamily='Roboto'>Jason, 29</Text>
+            <Text style={{color:'grey', fontSize:20, paddingTop:2,paddingLeft:10}} fontFamily='Roboto'>Intermidiate</Text>
+
+          {/* </View> */}
         </Card>
 
-        <Card style={[styles.card, styles.card2]}><Text style={styles.label}>B</Text></Card>
+        {/* <Card style={[styles.card, styles.card2]}><Text style={styles.label}>B</Text></Card>
         <Card style={[styles.card, styles.card1]}><Text style={styles.label}>C</Text></Card>
         <Card style={[styles.card, styles.card2]}><Text style={styles.label}>D</Text></Card>
-        <Card style={[styles.card, styles.card1]}><Text style={styles.label}>E</Text></Card>
+        <Card style={[styles.card, styles.card1]}><Text style={styles.label}>E</Text></Card> */}
 
       </CardStack>
 
@@ -49,17 +52,17 @@ export default function HomeScreen({ navigation }) {
           <TouchableOpacity style={[styles.button, styles.red]} onPress={() => {
             this.swiper.swipeLeft();
           }}>
-            <Icon name='clear' color='#fd267d' size="50" />
+            <Icon name='clear' color='#fd267d' size={50} />
           </TouchableOpacity>
           <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
-            this.swiper.goBackFromLeft();
+            this.swiper.goBackFromTop();
           }}>
             <Icon name='refresh' color='rgb(246,190,66)' style={{ height: 62, width: 62 }} />
           </TouchableOpacity>
           <TouchableOpacity style={[styles.button, styles.green]} onPress={() => {
             this.swiper.swipeRight();
           }}>
-            <Icon name='check' color='#01df8a' size="50" />
+            <Icon name='check' color='#01df8a' size={50} />
           </TouchableOpacity>
         </View>
 
@@ -143,7 +146,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
   },
   card1: {
-    backgroundColor: '#FE474C',
+    backgroundColor: 'rgb(26,27,34)',
   },
   card2: {
     backgroundColor: '#FEB12C',

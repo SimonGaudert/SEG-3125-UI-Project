@@ -38,7 +38,7 @@ export default class ProfileScreen extends React.Component {
         return (
             <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={styles.profile}>
-                    Profile
+                    {/* Profile */}
             </Text>
                 <Image
                     source={{ uri: 'https://i.redd.it/6onq25y0sh311.jpg', }}
