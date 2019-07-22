@@ -9,12 +9,12 @@ import {
   Image,
   Alert
 } from 'react-native';
-import { Icon } from 'react-native-elements';
 
 export default class LoginScreen extends React.Component {
 
   constructor(props) {
     super(props);
+    //set state of username and password to empty string
     this.state = {
       email: '',
       password: '',
@@ -22,16 +22,9 @@ export default class LoginScreen extends React.Component {
   }
 
   onClickListener = (viewId) => {
-    // if(this.state.email == undefined && this.state.password == undefined){
-    //   this.state = {email:'abc', password:'abc'}
-    // } else if(this.state.email === undefined ){
-    //   this.state = {email:'abc'}
-    // }else if(this.state.password === undefined){
-    //   this.state = { password:'abc'}
-    console.log(this.validateUsername(this.state.email))
-    console.log(this.validateUsername(this.state.password))
-
+    //If login button clicked
     if (viewId == 'login') {
+      //Check validity of password formatting
       if(this.validateUsername(this.state.email) == false && this.validatePassword(this.state.password)==false){
         Alert.alert('General Login Error', 'Invalid email. Password must be at least 6 characters.')
       } else if(this.validateUsername(this.state.email) == false){
@@ -41,8 +34,10 @@ export default class LoginScreen extends React.Component {
       } else{
         this.props.navigation.navigate('Main')
       }
+    //If register button clicked
     } else if (viewId == 'register') {
       Alert.alert('Feature Not Part of Prototype.', 'User will be sent to external site. Try Login.')
+    //If forgot password button clicked
     } else if (viewId == 'forgotPassword') {
       Alert.alert('Feature Not Part of Prototype.', 'User will be sent to external site. Try Login')
     }

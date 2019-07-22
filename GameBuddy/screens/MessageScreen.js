@@ -14,7 +14,8 @@ import { ListItem, Icon } from 'react-native-elements'
 
 export default function MessageScreen({ navigation }) {
     nav = navigation;
-    let list = [
+    //contact list used to populate the list view
+    let contactList = [
         {
             name: 'Amy Farha',
             avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
@@ -46,7 +47,8 @@ export default function MessageScreen({ navigation }) {
         <ScrollView>
             <View>
                 {
-                    list.map((l, i) => (
+                    //Loop through each element of contactList and display the name and avatar of each contact
+                    contactList.map((l, i) => (
                         <ListItem
                             bottomDivider={true}
                             key={i}

@@ -23,6 +23,7 @@ const config = Platform.select({
   default: {},
 });
 
+//Adding two screens to stack to navigate from home to filter
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
@@ -33,6 +34,7 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
   tabBarLabel: ' ',
+  //Styling for the big blue plus button in the nottom nav bar
   tabBarIcon: 
       <View style={{
           height: 80,
@@ -42,11 +44,11 @@ HomeStack.navigationOptions = {
           paddingTop: 15}}>
         <Icon name="ios-add" color="white" type="ionicon" size={50}/>
       </View>
-  
 };
 
 HomeStack.path = '';
 
+//Create a stack for contacts and the chat screen which can be navigated to
 const MessageStack = createStackNavigator(
   {
     Message: MessageScreen,

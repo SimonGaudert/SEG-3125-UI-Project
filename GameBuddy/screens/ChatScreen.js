@@ -3,12 +3,16 @@ import { GiftedChat } from 'react-native-gifted-chat'
 import {Text} from 'react-native'
 
 export default class ChatScreen extends React.Component {
+  //The inital state of messages is empty
   state = {
     messages: [],
   }
   
+  //Here we add a message to default on loading of component
   componentWillMount() {
+    //We recieve the name and image of contact to mantain the illusion that this is a custom screen
     const avatar_url = this.props.navigation.getParam('avatar_url', 'no-name-found');
+    //Adding dummy message
     this.setState({
       messages: [
         {
@@ -25,7 +29,7 @@ export default class ChatScreen extends React.Component {
     })
   }
 
-
+  //If user clicks send, append users message to the message state array
   onSend(messages = []) {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
@@ -36,6 +40,7 @@ export default class ChatScreen extends React.Component {
     return (
       <GiftedChat
         messages={this.state.messages}
+        //onSend call the onSend function to add message to state
         onSend={messages => this.onSend(messages)}
         user={{
           _id: 1,
@@ -44,50 +49,3 @@ export default class ChatScreen extends React.Component {
     )
   }
 }
-
-// export default function ChatScreen({ navigation }) {
-//   state = {
-//     messages: [],
-//   }
-
-//   const name = navigation.getParam('name', 'no-name-found');
-//   const avatar_url = navigation.getParam('avatar_url', 'no-name-found');
-
-//   navigation.goBack();
-
-//   state = {
-//     messages: [
-//       {
-//         _id: 1,
-//         text: 'Nice to meet you John!',
-//         createdAt: new Date(),
-//         user: {
-//           _id: 2,
-//           name: 'React Native',
-//           avatar: avatar_url,
-//         },
-//       }
-//     ],
-//   }
-
-//   function onSend(messages = []) {
-//     state = (previousState => ({
-//       messages: GiftedChat.append(previousState.messages, messages),
-//     }))
-//   }
-
-
-//   return (
-//     <GiftedChat
-//       messages={this.state.messages}
-//       onSend={messages => onSend(messages)}
-//       user={{
-//         _id: 1,
-//       }}
-//     />
-//   )
-// }
-
-// ChatScreen.navigationOptions = {
-//   title: "name",
-// };

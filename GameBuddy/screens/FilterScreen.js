@@ -1,64 +1,73 @@
 import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
 import { ButtonGroup, Button } from 'react-native-elements';
 import { View, Text } from 'react-native'
 
 export default class FilterScreen extends React.Component {
   constructor() {
     super()
+    //set all initial value of buttons to zero
     this.state = {
-      selectedIndex: 0,
-      selectedIndex1: 0,
-      selectedIndex2: 0
+      selectedIndexConsole: 0,
+      selectedIndexCompetitive: 0,
+      selectedIndexGender: 0
     }
-    this.updateIndex = this.updateIndex.bind(this)
-    this.updateIndex1 = this.updateIndex1.bind(this)
-    this.updateIndex2 = this.updateIndex2.bind(this)
+
+    //Bind the indexes of each
+    this.updateIndexConsole = this.updateIndexConsole.bind(this)
+    this.updateIndexCompetitive = this.updateIndexCompetitive.bind(this)
+    this.updateIndexGender = this.updateIndexGender.bind(this)
   }
 
-  updateIndex(selectedIndex) {
-    this.setState({ selectedIndex: selectedIndex })
+  //handle press of console button selected
+  updateIndexConsole(selectedIndexConsole) {
+    this.setState({ selectedIndexConsole: selectedIndexConsole })
   }
 
-  updateIndex1(selectedIndex1) {
-    this.setState({ selectedIndex1: selectedIndex1 })
+  //handle press of competitive button selected
+  updateIndexCompetitive(selectedIndexCompetitive) {
+    this.setState({ selectedIndexCompetitive: selectedIndexCompetitive })
   }
 
-  updateIndex2(selectedIndex2) {
-    this.setState({ selectedIndex2: selectedIndex2 })
+  //handle press of gender button selected
+  updateIndexGender(selectedIndexGender) {
+    this.setState({ selectedIndexGender: selectedIndexGender })
   }
 
   render() {
+    //Button names
     const consoleButtons = ['Switch', 'PS4', 'xBox', 'PC']
     const competitiveButtons = ['Amateur', 'Intermediate', 'Professional']
     const genderButtons = ['Male', 'Female', 'No Preference']
-    const { selectedIndex } = this.state
-    const { selectedIndex1 } = this.state
-    const { selectedIndex2 } = this.state
+    
+    //states of index
+    const { selectedIndexConsole } = this.state
+    const { selectedIndexCompetitive } = this.state
+    const { selectedIndexGender } = this.state
 
     return (
       <View>
         <Text style={{ textAlign: 'center', paddingTop: 15, paddingLeft: 10, fontSize: 15 }}>Console Type</Text>
         <ButtonGroup
-          onPress={this.updateIndex}
-          selectedIndex={selectedIndex}
+          onPress={this.updateIndexConsole}
+          selectedIndex={selectedIndexConsole}
           buttons={consoleButtons}
           containerStyle={{ height: 45, marginTop: 8, marginBottom: 25 }}
         />
         <Text style={{ textAlign: 'center', paddingTop: 15, paddingLeft: 10, fontSize: 15 }}>Competitiveness</Text>
         <ButtonGroup
-          onPress={this.updateIndex1}
-          selectedIndex={selectedIndex1}
+          onPress={this.updateIndexCompetitive}
+          selectedIndex={selectedIndexCompetitive}
           buttons={competitiveButtons}
           containerStyle={{ height: 45, marginTop: 8 , marginBottom: 25}}
         />
         <Text style={{ textAlign: 'center', paddingTop: 15, paddingLeft: 10, fontSize: 15 }}>Gender</Text>
         <ButtonGroup
-          onPress={this.updateIndex2}
-          selectedIndex={selectedIndex2}
+          onPress={this.updateIndexGender}
+          selectedIndex={selectedIndexGender}
           buttons={genderButtons}
           containerStyle={{ height: 45, marginTop: 8, marginBottom: 25 }}
         />
+        {/* Navigate user back to swipe screen to "apply" filters */}
         <Button style={{ marginTop: 30 }} title="Apply Filters" onPress={() => this.props.navigation.navigate('Home')} />
       </View>
     )

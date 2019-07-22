@@ -8,40 +8,37 @@ import {
 
 import { Icon, } from 'react-native-elements'
 
-
 export default class SettingScreen extends React.Component {
+  //Set initial value of all values to false
   state = {
-    switchValue: false,
+    switchValueAge: false,
+    switchValueLocation: false,
+    switchValueNotification: false,
+    switchValueDiscoverability: false,
   };
 
-  state = {
-    switchValue1: false,
-  };
-  state = {
-    switchValue2: false,
-  };
-  state = {
-    switchValue3: false,
-  };
-
-  _handleToggleSwitch = () =>
+  //function to invert the state of age setting
+  _handleToggleSwitchAge = () =>
     this.setState(state => ({
-      switchValue: !state.switchValue,
+      switchValueAge: !state.switchValueAge,
     }));
 
-  _handleToggleSwitch1 = () =>
+  //function to invert the state of location setting
+  _handleToggleSwitchLocation = () =>
     this.setState(state => ({
-      switchValue1: !state.switchValue1,
+      switchValueLocation: !state.switchValueLocation,
     }));
 
-  _handleToggleSwitch2 = () =>
+  //function to invert the state of notification setting
+  _handleToggleSwitchNotification = () =>
     this.setState(state => ({
-      switchValue2: !state.switchValue2,
+      switchValueNotification: !state.switchValueNotification,
     }));
 
-  _handleToggleSwitch3 = () =>
+  //function to invert the state of discoverability setting
+  _handleToggleSwitchDiscoverability = () =>
     this.setState(state => ({
-      switchValue3: !state.switchValue3,
+      switchValueDiscoverability: !state.switchValueDiscoverability,
     }));
 
   settingsData = [
@@ -55,8 +52,8 @@ export default class SettingScreen extends React.Component {
           renderAccessory: () => (
             <Switch
               label="Hello"
-              onValueChange={this._handleToggleSwitch}
-              value={this.state.switchValue}
+              onValueChange={this._handleToggleSwitchAge}
+              value={this.state.switchValueAge}
             />
           ),
         },
@@ -66,8 +63,8 @@ export default class SettingScreen extends React.Component {
           renderAccessory: () => (
             <Switch
               label="Hello"
-              onValueChange={this._handleToggleSwitch1}
-              value={this.state.switchValue1}
+              onValueChange={this._handleToggleSwitchLocation}
+              value={this.state.switchValueLocation}
             />
           ),
         },
@@ -77,8 +74,8 @@ export default class SettingScreen extends React.Component {
           renderAccessory: () => (
             <Switch
               label="Hello"
-              onValueChange={this._handleToggleSwitch2}
-              value={this.state.switchValue2}
+              onValueChange={this._handleToggleSwitchNotification}
+              value={this.state.switchValueNotification}
             />
           ),
         },
@@ -88,8 +85,8 @@ export default class SettingScreen extends React.Component {
           renderAccessory: () => (
             <Switch
               label="Hello"
-              onValueChange={this._handleToggleSwitch3}
-              value={this.state.switchValue3}
+              onValueChange={this._handleToggleSwitchDiscoverability}
+              value={this.state.switchValueDiscoverability}
             />
           ),
         },
